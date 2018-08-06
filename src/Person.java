@@ -4,10 +4,20 @@ public class Person {
     private int age;
     private String pesel;
 
-    public Person(String firstName, String lastName, int age, String pesel) {
+    public Person(String firstName, String lastName, int age, String pesel)
+            throws NameUndefinedException, IncorrectAgeException {
         this.firstName = firstName;
+        if (firstName == null || firstName.length() <= 2) {
+            throw new NameUndefinedException();
+        }
         this.lastName = lastName;
+        if (lastName == null || lastName.length() <= 2) {
+            throw new NameUndefinedException();
+        }
         this.age = age;
+        if (age < 1) {
+            throw new IncorrectAgeException();
+        }
         this.pesel = pesel;
     }
 
